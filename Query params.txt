@@ -1,0 +1,23 @@
+const express = require('express')
+const port = 3000
+const app = express()
+
+/*
+- Query params => meusite.com/user?name=rodolfo&age=28 // FILTROS
+- Route params => /users/2 // BUSCAR, DELETAR OU ATUALIZAR ALGO ESPECÍFICO
+
+*/
+
+app.get('/users', (request, response) => {
+    console.log(request.query)
+    const { name, age } = request.query
+        //const name = request.query.name
+        //const age = request.query.age
+        //console.log(name, age)
+
+    return response.json({ name, age })
+})
+
+app.listen(port, () => {
+    console.log(`🚀 Server started on port ${port}`)
+})
